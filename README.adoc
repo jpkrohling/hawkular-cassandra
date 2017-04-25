@@ -1,16 +1,15 @@
-Cassandra - Hawkular build
-===
+= Cassandra - Hawkular build
 
 This it the RPM source repository for the Cassandra packaged for Hawkular. This
 is basically the Apache Cassandra 3.0.12 plus the patch for CASSANDRA-13067.
 
-How to build
-===
+= How to build
 
 ```bash
 sudo dnf install fedora-packager @development-tools
 sudo usermod -a -G mock $USER
 rpmdev-setuptree
-cd ~/rpmbuild/SOURCES
-wget https://github.com/apache/cassandra/archive/cassandra-3.0.12.tar.gz
-````
+rpmbuild -ba hawkular-cassandra.spec
+fedpkg-copr --dist f25 srpm
+mock -r fedora-25-x86_64 hawkular-cassandra-3.0.12-1.fc25.src.rpm
+```
