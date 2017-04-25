@@ -20,3 +20,13 @@ The Copr repository is linked via Webhook to this repository. Every new commit
 sends a push event to Copr, which triggers a new build.
 
 https://copr.fedorainfracloud.org/coprs/jpkroehling/
+
+== Troubleshooting
+
+If the build fails on Copr, try building locally with the same input as Copr:
+
+```bash
+git clone http://copr-dist-git.fedorainfracloud.org/git/jpkroehling/cassandra/hawkular-cassandra.git
+fedpkg-copr --dist f25 srpm
+mock -r fedora-25-x86_64 hawkular-cassandra-3.0.12-1.fc25.src.rpm
+```
